@@ -1,3 +1,4 @@
+
 async function sendMessage(fromButton = null) {
   const input = document.getElementById("userInput");
   const text = fromButton || input.value.trim();
@@ -28,7 +29,7 @@ async function sendMessage(fromButton = null) {
       btn.onclick = () => sendMessage(opt);
       optionsBox.appendChild(btn);
     });
-    scrollToBottom();
+    scrollToBottom(); // גלילה גם אחרי הצגת כפתורים
   }
 }
 
@@ -69,11 +70,12 @@ async function resetChat() {
   const res = await fetch("/reset", { method: "POST" });
   const data = await res.json();
   addMessage("bot", data.response);
+  sendMessage("");
 }
 
 window.onload = () => {
-  const firstMessage = `היי! אני צ'אטבוט שמומחה בעזרה לחיילים משוחררים 🎓<br>
-אני כאן כדי לעזור לך למצוא קורסים שמתאימים בדיוק לך – לפי תחום, אזור ומידע נוסף.<br><br>
-האם תרצה לנסות? ✨`;
-  addMessage("bot", firstMessage);
+  const existing = document.getElementById("messages").children.length;
+  if (existing === 0) {
+    sendMessage(""); // מופעל רק אם השיחה באמת ריקה
+  }
 };
