@@ -28,7 +28,7 @@ async function sendMessage(fromButton = null) {
       btn.onclick = () => sendMessage(opt);
       optionsBox.appendChild(btn);
     });
-    scrollToBottom(); // גלילה גם אחרי הצגת כפתורים
+    scrollToBottom();
   }
 }
 
@@ -54,7 +54,6 @@ function fetchCourseDetails(courseId) {
   document.getElementById("messages").appendChild(detailDiv);
   scrollToBottom();
 
-  // הודעת סיכום לאחר פרטי קשר
   const summary = document.createElement("div");
   summary.className = "msg bot";
   summary.innerHTML = "📬 לסיכום: תוכל ללחוץ על כתובת המייל כדי לשלוח פנייה אוטומטית ✉️<br>שמחתי לעזור! אני כאן לכל שאלה נוספת 😊";
@@ -70,9 +69,11 @@ async function resetChat() {
   const res = await fetch("/reset", { method: "POST" });
   const data = await res.json();
   addMessage("bot", data.response);
-  sendMessage("");
 }
 
 window.onload = () => {
-  sendMessage("");
+  const firstMessage = `היי! אני צ'אטבוט שמומחה בעזרה לחיילים משוחררים 🎓<br>
+אני כאן כדי לעזור לך למצוא קורסים שמתאימים בדיוק לך – לפי תחום, אזור ומידע נוסף.<br><br>
+האם תרצה לנסות? ✨`;
+  addMessage("bot", firstMessage);
 };
