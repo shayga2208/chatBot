@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>בוט קורסים לחיילים משוחררים</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="/static/script.js" defer></script>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">🎓 בוט קורסים לחיילים משוחררים</div>
+    <div id="messages" class="chat-box"></div>
+    <div id="options" class="options-box"></div>
+    <div class="input-box">
+      <input type="text" id="userInput" placeholder="הקלד הודעה כאן..." />
+      <button onclick="sendMessage()">שלח</button>
+    </div>
+  </div>
+<div style="text-align:center; margin: 10px;">
+  <button onclick="resetChat()" style="background:#ef4444; color:white; border:none; padding:8px 16px; border-radius:8px; cursor:pointer;">
+    🔄 איפוס שיחה
+  </button>
+</div>
+
+</body>
+</html>
