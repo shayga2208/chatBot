@@ -29,7 +29,7 @@ async function sendMessage(fromButton = null) {
       btn.onclick = () => sendMessage(opt);
       optionsBox.appendChild(btn);
     });
-    scrollToBottom(); // גלילה גם אחרי הצגת כפתורים
+    scrollToBottom();
   }
 }
 
@@ -74,8 +74,5 @@ async function resetChat() {
 }
 
 window.onload = () => {
-  const existing = document.getElementById("messages").children.length;
-  if (existing === 0) {
-    sendMessage(""); // מופעל רק אם השיחה באמת ריקה
-  }
+  sendMessage(""); // מופעל תמיד, לא תלוי במספר ההודעות
 };
