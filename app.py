@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import json
+import os
 from fuzzywuzzy import fuzz
 from openai import OpenAI
 
