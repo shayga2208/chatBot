@@ -10,7 +10,7 @@ with open("final_cleaned_data.json", encoding="utf-8") as f:
 with open("category_area_map.json", encoding="utf-8") as f:
     category_area_map = json.load(f)
 
-api_key = "YOUR_OPENAI_API_KEY"
+api_key = os.getenv("OPENAI_API_KEY")  # נשלף מרנדר
 client = OpenAI(api_key=api_key)
 
 user_state = {
